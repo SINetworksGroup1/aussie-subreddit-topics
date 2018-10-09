@@ -29,11 +29,12 @@ try:
         password=password, \
         user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
     )
+
+    print('Logged in as ' + str(r.user.me()))
 except:
     print('Failed to create PRAW instance, check your credentials')
     exit(1)
 
-print('Logged in as ' + str(r.user.me()))
 
 sub = r.subreddit('adelaide')
 

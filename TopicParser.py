@@ -13,7 +13,7 @@ class TopicParser(object):
     # Give a title as a string
     def parse(self, title):
         # Splits string by white space
-        topics = title.split()
+        topics = title.lower().split()
         for topic in topics:
             # Removes all chars in charsToRemove from each topic
             for c in self.charsToRemove:

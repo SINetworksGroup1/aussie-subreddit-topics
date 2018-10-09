@@ -1,18 +1,37 @@
 #!/usr//bin/python3.6
 
 from TopicParser import TopicParser, Keyword
+from configparser import ConfigParser
 import praw
 
-# Create the object
+# Load credentials
+try:
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    client_id = config['Credentials']['client_id']
+    client_secret = config['Credentials']['client_secret']
+    username = config['Credentials']['username']
+    password = config['Credentials']['password']
+except:
+    print('Failed to read config')
+    exit(1)
+
+# Create the topic parser
 tp = TopicParser()
 
-r = praw.Reddit(
-    client_id='', \
-    client_secret='', \
-    username='', \
-    password='', \
-    user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
-)
+# Create PRAW instance
+try:
+    r = praw.Reddit(
+        client_id=client_id, \
+        client_secret=client_secret, \
+        username=username, \
+        password=password, \
+        user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
+    )
+except:
+    print('Failed to create PRAW instance, check your credentials')
+    exit(1)
 
 print('Logged in as ' + str(r.user.me()))
 

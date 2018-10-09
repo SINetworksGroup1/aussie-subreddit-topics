@@ -7,7 +7,7 @@ class TopicParser(object):
     def __init__(self):
         print("TopicParser Initalised")
         self.listOfTopics = dict()
-        self.charsToRemove = list(",.[]0123456789/\\”’{}?\"<>:;|!@#$%^&*()_=+")
+        self.charsToRemove = list(",.[]0123456789\\”’{}?\"<>:;|!@#$%^&*()_=+")
         with open('1-1000.txt', 'r') as textFile:
             self.topEnglishWords = textFile.read().split('\n')
 
@@ -47,13 +47,13 @@ class TopicParser(object):
         keywordDict = dict()
         for keywordClass in keywordList:
             keywordDict[keywordClass.keyword] = keywordClass.frequency
-        with open(fileName + '.json', 'w') as file:
+        with open('./jsons/' + fileName + '.json', 'w') as file:
             json.dump(keywordDict, file)
             print("Data saved to " + fileName + ".json")
 
     # Reads fileName.json to the dictonary
     def load(self, fileName):
-        with open(fileName + '.json', 'r') as file:
+        with open('./jsons/' + fileName + '.json', 'r') as file:
             keywordDict = json.load(file)
             for keyword in keywordDict:
                 self.listOfTopics[keyword] = Keyword(keyword, keywordDict.get(keyword))

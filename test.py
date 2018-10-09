@@ -2,7 +2,7 @@
 
 from TopicParser import TopicParser, Keyword
 from configparser import ConfigParser
-
+import sys
 import praw
 from prawcore.exceptions import OAuthException
 
@@ -38,19 +38,21 @@ except OAuthException:
     print('Failed to create PRAW instance, check your credentials')
     exit(1)
 
-sub = r.subreddit('adelaide')
+subreddit = sys.argv[1]
+sub = r.subreddit(subreddit)
+print('Searching the ' + subreddit + " subreddit...")
 
-for submission in sub.hot(limit=10):
-    # print(submission.title)\
+for submission in sub.hot(limit=100):
     tp.parse(submission.title)
+    tp.parse(submission.selftext)
 
 # save the dictonary to a JSON file
-# tp.save("test")
+tp.save(subreddit)
 
 # Load the data.json to the dictonary
-# tp.load("test")
+# tp.load(subreddit)
 
 # get the dictonary from the object and print it out
 list = tp.getTopics()
-for keyword in sorted(list, reverse=True):
-    print("{} - {}".format(keyword.keyword, str(keyword.frequency)))
+for keyword in sorted(list):
+    print("{} - {}".format(str(keyword.frequency), keyword.keyword))

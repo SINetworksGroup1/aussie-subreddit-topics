@@ -21,7 +21,7 @@ class TopicParser(object):
                 topic = topic.replace("'s'", "")
                 topic = topic.replace("'s'", "")
             # Checks if the topic already exists in the listOfTopics
-            if topic in self.listOfTopics and topic:
+            if topic in self.listOfTopics:
                 # if it does it incriments the count of the word
                 self.listOfTopics[topic].frequency += 1
             else:

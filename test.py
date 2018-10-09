@@ -2,7 +2,9 @@
 
 from TopicParser import TopicParser, Keyword
 from configparser import ConfigParser
+
 import praw
+from prawcore.exceptions import OAuthException
 
 # Load credentials
 try:
@@ -13,8 +15,9 @@ try:
     client_secret = config['Credentials']['client_secret']
     username = config['Credentials']['username']
     password = config['Credentials']['password']
-except:
+except KeyError as e:
     print('Failed to read config')
+    print('More specifically whe trying to read ' + str(e))
     exit(1)
 
 # Create the topic parser
@@ -31,10 +34,9 @@ try:
     )
 
     print('Logged in as ' + str(r.user.me()))
-except:
+except OAuthException:
     print('Failed to create PRAW instance, check your credentials')
     exit(1)
-
 
 sub = r.subreddit('adelaide')
 

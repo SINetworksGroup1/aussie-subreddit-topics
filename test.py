@@ -1,20 +1,42 @@
 #!/usr//bin/python3.6
 
 from TopicParser import TopicParser, Keyword
-import praw
+from configparser import ConfigParser
 
-# Create the object
+import praw
+from prawcore.exceptions import OAuthException
+
+# Load credentials
+try:
+    config = ConfigParser()
+    config.read('config.ini')
+
+    client_id = config['Credentials']['client_id']
+    client_secret = config['Credentials']['client_secret']
+    username = config['Credentials']['username']
+    password = config['Credentials']['password']
+except KeyError as e:
+    print('Failed to read config')
+    print('More specifically whe trying to read ' + str(e))
+    exit(1)
+
+# Create the topic parser
 tp = TopicParser()
 
-r = praw.Reddit(
-    client_id='', \
-    client_secret='', \
-    username='', \
-    password='', \
-    user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
-)
+# Create PRAW instance
+try:
+    r = praw.Reddit(
+        client_id=client_id, \
+        client_secret=client_secret, \
+        username=username, \
+        password=password, \
+        user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
+    )
 
-print('Logged in as ' + str(r.user.me()))
+    print('Logged in as ' + str(r.user.me()))
+except OAuthException:
+    print('Failed to create PRAW instance, check your credentials')
+    exit(1)
 
 sub = r.subreddit('adelaide')
 

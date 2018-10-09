@@ -21,16 +21,16 @@ class TopicParser(object):
                 topic = topic.replace("'s'", "")
                 topic = topic.replace("'s'", "")
             # Checks if the topic already exists in the listOfTopics
-            if topic in self.listOfTopics:
+            if topic in self.listOfTopics and topic:
                 # if it does it incriments the count of the word
-                self.listOfTopics[topic] += 1
+                self.listOfTopics[topic].frequency += 1
             else:
                 # If not it adds it to the list and gives it a count of one
-                self.listOfTopics[topic] = 1
+                self.listOfTopics[topic] = Keyword(topic, 1)
 
     # Returns the listOfTopics as a dictonary
     def getTopics(self):
-        return self.listOfTopics
+        return self.listOfTopics.values()
 
     # Saves the dictonary to fileName.json
     def save(self, fileName):
@@ -41,3 +41,11 @@ class TopicParser(object):
     def load(self, fileName):
         with open(fileName + '.json', 'r') as file:
             self.listOfTopics = json.load(file)
+
+class Keyword(object):
+    def __init__(self, keyword, frequency):
+        self.keyword = keyword
+        self.frequency = frequency
+
+    def __lt__(self, other):
+        return self.frequency < other.frequency

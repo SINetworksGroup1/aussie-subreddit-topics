@@ -1,9 +1,9 @@
 #!/usr//bin/python3.6
 
-from TopicParser import TopicParser, Keyword
-from configparser import ConfigParser
 import sys
 import praw
+from TopicParser import TopicParser, Keyword
+from configparser import ConfigParser
 from prawcore.exceptions import OAuthException
 
 # Load credentials

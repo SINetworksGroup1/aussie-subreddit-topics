@@ -6,7 +6,7 @@ import praw
 
 # Load credentials
 try:
-    config = configparser.ConfigParser()
+    config = ConfigParser()
     config.read('config.ini')
 
     client_id = config['Credentials']['client_id']

@@ -19,3 +19,52 @@
     float:right;
 }
 
+.sidebar h1{
+    text-align: center;
+}
+
+.australia-pic button {
+    background-color: black;
+    border-width: 4px;
+    border-color:white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100%;
+    position:absolute;
+
+}
+
+.perth{
+    margin: 560px 80px;
+}
+
+.adelaide{
+    margin: 560px 520px;
+}
+
+.melbourne{
+    margin: 640px 660px;
+}
+
+.hobart{
+    margin: 750px 660px;
+}
+
+.sydney{
+    margin: 550px 760px;
+}
+
+.canberra{
+    margin: 600px 730px;
+}
+
+.brisbane{
+    margin: 400px 830px;
+}
+
+.darwin{
+    margin: 30px 360px;
+}

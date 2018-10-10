@@ -1,32 +1,32 @@
-.australia-pic{
+.australia-pic {
     float:left;
     margin-left: 250px;
     margin-top: 40px;
     background-image: url("/assets/images/australia.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width:45vw;
+    width: 45vw;
     height: 800px;
 }
 /* .australia-pic img{
     width: 80%;
 
 } */
-.sidebar{
+.sidebar {
     width:30vw;
     height: 100vh;
     background-color: cadetblue;
     float:right;
 }
 
-.sidebar h1{
+.sidebar h1 {
     text-align: center;
 }
 
 .australia-pic button {
     background-color: black;
     border-width: 4px;
-    border-color:white;
+    border-color: white;
     padding: 10px;
     text-align: center;
     text-decoration: none;
@@ -37,34 +37,42 @@
 
 }
 
-.perth{
+.perth {
     margin: 560px 80px;
+    outline: 0;
 }
 
-.adelaide{
+.adelaide {
     margin: 560px 520px;
+    outline: 0;
 }
 
-.melbourne{
+.melbourne {
     margin: 640px 660px;
+    outline: 0;
 }
 
-.hobart{
+.hobart {
     margin: 750px 660px;
+    outline: 0;
 }
 
-.sydney{
+.sydney {
     margin: 550px 760px;
+    outline: 0;
 }
 
-.canberra{
+.canberra {
     margin: 600px 730px;
+    outline: 0;
 }
 
-.brisbane{
+.brisbane {
     margin: 400px 830px;
+    outline: 0;
 }
 
-.darwin{
+.darwin {
     margin: 30px 360px;
+    outline: 0;
 }

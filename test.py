@@ -36,7 +36,7 @@ try:
         client_secret=client_secret, \
         username=username, \
         password=password, \
-        user_agent='aussie-subreddit-topics by /u/Thomotron and /u/DoneRaging' \
+        user_agent='aussie-subreddit-topics by /u/Thomotron, /u/DoneRaging, and /u/testing_qwerty123' \
     )
 
     print('Logged in as ' + str(r.user.me()))

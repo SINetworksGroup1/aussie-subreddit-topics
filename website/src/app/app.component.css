@@ -1,0 +1,21 @@
+.australia-pic{
+    float:left;
+    margin-left: 250px;
+    margin-top: 40px;
+    background-image: url("/assets/images/australia.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:45vw;
+    height: 800px;
+}
+/* .australia-pic img{
+    width: 80%;
+
+} */
+.sidebar{
+    width:30vw;
+    height: 100vh;
+    background-color: cadetblue;
+    float:right;
+}
+

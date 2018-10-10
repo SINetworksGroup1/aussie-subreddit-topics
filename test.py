@@ -1,10 +1,16 @@
 #!/usr//bin/python3.6
 
-from TopicParser import TopicParser, Keyword
-from configparser import ConfigParser
 import sys
 import praw
+from TopicParser import TopicParser, Keyword
+from configparser import ConfigParser
 from prawcore.exceptions import OAuthException
+from argparse import ArgumentParser
+
+# Get arguments
+parser = ArgumentParser()
+parser.add_argument('subreddit', help='subreddit to get hot topics from')
+args = parser.parse_args()
 
 # Load credentials
 try:
@@ -38,16 +44,15 @@ except OAuthException:
     print('Failed to create PRAW instance, check your credentials')
     exit(1)
 
-subreddit = sys.argv[1]
-sub = r.subreddit(subreddit)
-print('Searching the ' + subreddit + " subreddit...")
+sub = r.subreddit(args.subreddit)
+print('Searching the ' + sub.display_name + " subreddit...")
 
 for submission in sub.hot(limit=100):
     tp.parse(submission.title)
     tp.parse(submission.selftext)
 
 # save the dictonary to a JSON file
-tp.save(subreddit)
+tp.save(sub.display_name)
 
 # Load the data.json to the dictonary
 # tp.load(subreddit)

@@ -51,7 +51,8 @@ for submission in sub.hot(limit=100):
         'body' : submission.selftext, \
         'is_video' : submission.is_video, \
         'post_url' : 'www.reddit.com' + submission.permalink, \
-        'content_url' : submission.url \
+        'content_url' : submission.url, \
+        'category' : '' \
     })
 
 # save the dictonary to a JSON file

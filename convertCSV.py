@@ -1,7 +1,12 @@
 #!/usr//bin/python3.6
 
-import json, csv, sys
-subreddit = sys.argv[1]
+import json, csv, sys, argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('fileName', help='A JSON file name in ./formatted-jsons/ -.json, Example: ./convert.py adelaide')
+args = parser.parse_args()
+subreddit = args.fileName
+
 with open('./formatted-jsons/' + subreddit + '.json', 'r') as file:
     submissionList = json.load(file)
 

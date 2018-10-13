@@ -1,78 +1,101 @@
-.australia-pic {
-    float:left;
-    margin-left: 250px;
-    margin-top: 40px;
-    background-image: url("/assets/images/australia.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+.australia-pic
+{
+    position: relative;
+
+    float: left;
+
     width: 45vw;
     height: 800px;
+    margin-top: 40px;
+    margin-left: 250px;
+
+    background-image: url('/assets/images/australia.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 /* .australia-pic img{
     width: 80%;
 
 } */
-.sidebar {
-    width:30vw;
+.sidebar
+{
+    float: right;
+
+    width: 30vw;
     height: 100vh;
+
     background-color: cadetblue;
-    float:right;
 }
 
-.sidebar h1 {
+.sidebar h1
+{
     text-align: center;
 }
 
-.australia-pic button {
-    background-color: black;
-    border-width: 4px;
-    border-color: white;
+.australia-pic button
+{
+    font-size: 16px;
+
+    position: relative;
+
+    display: inline-block;
+
     padding: 10px;
+
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+
+    border-width: 4px;
+    border-color: white;
     border-radius: 100%;
-    position:absolute;
-
+    outline: 0;
+    background-color: black;
 }
 
-.perth {
-    margin: 560px 80px;
-    outline: 0;
+.perth
+{
+    top: 64%;
+    left: 7.5%;
 }
 
-.adelaide {
-    margin: 560px 520px;
-    outline: 0;
+.adelaide
+{
+    top: 70%;
+    left: 56.5%;
 }
 
-.melbourne {
-    margin: 640px 660px;
-    outline: 0;
+.melbourne
+{
+    top: 80%;
+    left: 67.7%;
 }
 
-.hobart {
-    margin: 750px 660px;
-    outline: 0;
+.hobart
+{
+    top: 95%;
+    left: 68.3%;
 }
 
-.sydney {
-    margin: 550px 760px;
-    outline: 0;
+.sydney
+{
+    top: 70.5%;
+    left: 75.7%;
 }
 
-.canberra {
-    margin: 600px 730px;
-    outline: 0;
+.canberra
+{
+    top: 73.5%;
+    left: 67.8%;
 }
 
-.brisbane {
-    margin: 400px 830px;
-    outline: 0;
+.brisbane
+{
+    top: 51%;
+    left: 77%;
 }
 
-.darwin {
-    margin: 30px 360px;
-    outline: 0;
+.darwin
+{
+    top: 2.5%;
+    left: 19%;
 }

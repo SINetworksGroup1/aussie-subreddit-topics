@@ -1,28 +1,26 @@
-var app = angular.module('app', [])
+var app = angular.module('app', ['ngRoute'])
 
-app.controller('mapController', ['$scope', function($scope)
+app.config(function($routeProvider, $locationProvider)
+{
+    $locationProvider.html5Mode(true);
+});
+
+app.controller('mapController', ['$scope', '$location', function($scope, $location)
 {
     $scope.stateClicked = (state) =>
     {
-        console.log(state);
         switch (state)
         {
-            case 'sa':
-                break;
-            case 'wa':
-                break;
-            case 'nsw':
-                break;
-            case 'qld':
-                break;
-            case 'nt':
-                break;
-            case 'act':
-                break;
-            case 'tas':
-                break;
-            case 'vic':
-                break;
+            case 'sa': $location.path('/adelaide'); break;
+            case 'wa':$location.path('/perth'); break;
+            case 'nsw':$location.path('/sydney'); break;
+            case 'qld':$location.path('/brisbane'); break;
+            case 'nt':$location.path('/darwin'); break;
+            case 'act':$location.path('/canberra'); break;
+            case 'tas':$location.path('/hobart'); break;
+            case 'vic':$location.path('/melbourne'); break;
+            default:
+                console.error('State was clicked but not handled by switch (' + state + ')'); break;
         }
     };
 }]);

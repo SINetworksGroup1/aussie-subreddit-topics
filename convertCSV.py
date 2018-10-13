@@ -67,6 +67,7 @@ print("Memes: " + str(memes))
 
 total = generalDiscussion + transport + nature + history + other + questions + food + photos + news + entertainment + education + memes
 
+print("Total: " + str(total))
 if total == 100:
     with open(subreddit + '.csv', 'w', newline='') as csvfile:
         cw = csv.writer(csvfile, delimiter=',')

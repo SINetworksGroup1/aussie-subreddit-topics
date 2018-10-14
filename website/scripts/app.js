@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute'])
+var app = angular.module('app', ['ngRoute', 'chart.js'])
 
 app.config(function($routeProvider, $locationProvider)
 {
@@ -47,7 +47,25 @@ app.controller('cityController', ['$scope', '$routeParams', '$http', function($s
         .then(
             (r) =>
             {
+                // TODO: Try and re-do the JSON so it doesn't need to be fuzzed
+                //       into an array to be sorted
                 $scope.stats = angular.fromJson(r.data);
+                $scope.makeupData = [];
+                $scope.makeupLabels = [];
+
+                var dataArr = []
+                for (var key in r.data)
+                {
+                    dataArr.push([key, r.data[key]])
+                }
+
+                dataArr.sort((a, b) => { return b[1] - a[1] });
+
+                for (var i = 0; i < dataArr.length; i++)
+                {
+                    $scope.makeupLabels.push(dataArr[i][0])
+                    $scope.makeupData.push(dataArr[i][1])
+                }
             }
         );
 }]);

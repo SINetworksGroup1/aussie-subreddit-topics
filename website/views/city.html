@@ -1,15 +1,11 @@
 <div class="sidebar">
     <h1>{{title}}</h1>
-    <div>generalDiscussion: {{stats.generalDiscussion}}</div>
-    <div>transport: {{stats.transport}}</div>
-    <div>nature: {{stats.nature}}</div>
-    <div>history: {{stats.history}}</div>
-    <div>other: {{stats.other}}</div>
-    <div>questions: {{stats.questions}}</div>
-    <div>food: {{stats.food}}</div>
-    <div>photos: {{stats.photos}}</div>
-    <div>news: {{stats.news}}</div>
-    <div>entertainment: {{stats.entertainment}}</div>
-    <div>education: {{stats.education}}</div>
-    <div>memes: {{stats.memes}}</div>
+    <h2>Topic Composition</h2>
+    <canvas
+        id="pie"
+        class="chart chart-pie"
+        chart-data="makeupData"
+        chart-labels="makeupLabels"
+        chart-options="options">
+    </canvas>
 </div>

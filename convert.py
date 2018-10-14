@@ -53,6 +53,8 @@ for submission in submissionList:
         education += 1
     elif category == 'memes':
         memes += 1
+    else:
+        print('Unrecognised category \'' + category + '\' for submission \'' + submission.get('title') + '\'')
 
 print("General Discussion: " + str(generalDiscussion))
 print("Transport: " + str(transport))
@@ -66,6 +68,7 @@ print("News: " + str(news))
 print("Entertainment: " + str(entertainment))
 print("Education: " + str(education))
 print("Memes: " + str(memes))
+print('Total: ' + str(total))
 
 total = generalDiscussion + transport + nature + history + other + questions + food + photos + news + entertainment + education + memes
 

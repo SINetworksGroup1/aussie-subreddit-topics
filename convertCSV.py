@@ -24,7 +24,6 @@ education = 0
 memes = 0
 
 for submission in submissionList:
-    #print(submission.get('category'))
     category = submission.get('category').lower()
 
     if category == 'general discussion':

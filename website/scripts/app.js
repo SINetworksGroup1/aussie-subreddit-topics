@@ -36,10 +36,18 @@ app.controller('defaultSidebarController', ['$scope', function($scope)
                          'Graphs will appear below showing the topic makeup of each subreddit\'s posts.';
 }]);
 
-app.controller('cityController', ['$scope', '$routeParams', function($scope, $routeParams)
+app.controller('cityController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http)
 {
     // Found at https://stackoverflow.com/a/1026087
     var titlecasedCity = $routeParams.city.charAt(0).toUpperCase() + $routeParams.city.slice(1);
 
     $scope.title = titlecasedCity;
+
+    $http.get('/data/' + $routeParams.city + '.json')
+        .then(
+            (r) =>
+            {
+                $scope.stats = angular.fromJson(r.data);
+            }
+        );
 }]);

@@ -4,7 +4,9 @@ import json, csv, sys, argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('fileName', help='A JSON file name in ./formatted-jsons/ -.json, Example: ./convert.py adelaide')
+parser.add_argument('format', nargs='?', choices=['csv', 'json'], default='csv', help='format to output as (default: csv)')
 args = parser.parse_args()
+
 subreddit = args.fileName
 
 with open('./formatted-jsons/' + subreddit + '.json', 'r') as file:
@@ -67,21 +69,40 @@ print("Memes: " + str(memes))
 
 total = generalDiscussion + transport + nature + history + other + questions + food + photos + news + entertainment + education + memes
 
-print("Total: " + str(total))
 if total == 100:
-    with open(subreddit + '.csv', 'w', newline='') as csvfile:
-        cw = csv.writer(csvfile, delimiter=',')
-        cw.writerow(['Category'] + ['Frequency'])
-        cw.writerow(['General Discussion'] + [generalDiscussion])
-        cw.writerow(['Transport'] + [transport])
-        cw.writerow(['Nature'] + [nature])
-        cw.writerow(['History'] + [history])
-        cw.writerow(['Other'] + [other])
-        cw.writerow(['Questions'] + [questions])
-        cw.writerow(['Food'] + [food])
-        cw.writerow(['Photos'] + [photos])
-        cw.writerow(['News'] + [news])
-        cw.writerow(['Entertainment'] + [entertainment])
-        cw.writerow(['Education'] + [education])
+    if args.format == 'csv':
+        with open(subreddit + '.csv', 'w', newline='') as csvfile:
+            cw = csv.writer(csvfile, delimiter=',')
+            cw.writerow(['Category'] + ['Frequency'])
+            cw.writerow(['General Discussion'] + [generalDiscussion])
+            cw.writerow(['Transport'] + [transport])
+            cw.writerow(['Nature'] + [nature])
+            cw.writerow(['History'] + [history])
+            cw.writerow(['Other'] + [other])
+            cw.writerow(['Questions'] + [questions])
+            cw.writerow(['Food'] + [food])
+            cw.writerow(['Photos'] + [photos])
+            cw.writerow(['News'] + [news])
+            cw.writerow(['Entertainment'] + [entertainment])
+            cw.writerow(['Education'] + [education])
+    elif args.format == 'json':
+        with open(subreddit + '.json', 'w') as jsonfile:
+            json.dump( \
+                { \
+                    'generalDiscussion': generalDiscussion, \
+                    'transport': transport, \
+                    'nature': nature, \
+                    'history': history, \
+                    'other': other, \
+                    'questions': questions, \
+                    'food': food, \
+                    'photos': photos, \
+                    'news': news, \
+                    'entertainment': entertainment, \
+                    'education': education, \
+                    'memes': memes, \
+                }, \
+                jsonfile \
+            )
 else:
     print("There wasn't 100 post analysed,\nPlease check " + subreddit + '.json for Category Errors')

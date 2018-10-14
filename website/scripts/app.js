@@ -3,8 +3,8 @@ var app = angular.module('app', ['ngRoute'])
 app.config(function($routeProvider, $locationProvider)
 {
     $routeProvider
-        .when('/', {templateUrl: 'views/default.html', controller: 'sidebarController'})
-        .when('/:city', {templateUrl: 'views/city.html', controller: 'sidebarController'})
+        .when('/', {templateUrl: 'views/default.html', controller: 'defaultSidebarController'})
+        .when('/:city', {templateUrl: 'views/city.html', controller: 'cityController'})
 
     // $locationProvider.html5Mode(true); // Disabled so this can run on a static web server
 });
@@ -29,7 +29,14 @@ app.controller('mapController', ['$scope', '$location', function($scope, $locati
     };
 }]);
 
-app.controller('sidebarController', ['$scope', '$routeParams', function($scope, $routeParams)
+app.controller('defaultSidebarController', ['$scope', function($scope)
+{
+    $scope.title = 'Australian City Subreddit Stats';
+    $scope.description = 'Click on a state to view its capital subreddit\'s post statistics.\n' +
+                         'Graphs will appear below showing the topic makeup of each subreddit\'s posts.';
+}]);
+
+app.controller('cityController', ['$scope', '$routeParams', function($scope, $routeParams)
 {
     // Found at https://stackoverflow.com/a/1026087
     var titlecasedCity = $routeParams.city.charAt(0).toUpperCase() + $routeParams.city.slice(1);

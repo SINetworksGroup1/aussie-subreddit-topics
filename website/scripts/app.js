@@ -2,7 +2,11 @@ var app = angular.module('app', ['ngRoute'])
 
 app.config(function($routeProvider, $locationProvider)
 {
-    $locationProvider.html5Mode(true);
+    $routeProvider
+        .when('/', {templateUrl: 'views/default.html', controller: 'sidebarController'})
+        .when('/:city', {templateUrl: 'views/city.html', controller: 'sidebarController'})
+
+    // $locationProvider.html5Mode(true); // Disabled so this can run on a static web server
 });
 
 app.controller('mapController', ['$scope', '$location', function($scope, $location)
@@ -23,4 +27,12 @@ app.controller('mapController', ['$scope', '$location', function($scope, $locati
                 console.error('State was clicked but not handled by switch (' + state + ')'); break;
         }
     };
+}]);
+
+app.controller('sidebarController', ['$scope', '$routeParams', function($scope, $routeParams)
+{
+    // Found at https://stackoverflow.com/a/1026087
+    var titlecasedCity = $routeParams.city.charAt(0).toUpperCase() + $routeParams.city.slice(1);
+
+    $scope.title = titlecasedCity;
 }]);

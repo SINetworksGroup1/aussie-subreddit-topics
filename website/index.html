@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Hot Aussie Topics</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+        <script src="scripts/angular.min.js"></script>
+        <script src="scripts/angular-route.min.js"></script>
+        <script src="scripts/chart.min.js"></script>
+        <script src="scripts/angular-chart.min.js"></script>
+        <script src="scripts/app.js" type="application/javascript"></script>
+        <base href="/">
+    </head>
+    <body>
+        <div class="leftColumn">
+            <div class="australiaMap" ng-include="'images/australia.svg'"></div>
+        </div>
+        <div class="rightColumn">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>

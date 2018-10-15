@@ -26,7 +26,6 @@ education = 0
 memes = 0
 
 for submission in submissionList:
-    #print(submission.get('category'))
     category = submission.get('category').lower()
 
     if category == 'general discussion':
@@ -88,6 +87,7 @@ if total == 100:
             cw.writerow(['News'] + [news])
             cw.writerow(['Entertainment'] + [entertainment])
             cw.writerow(['Education'] + [education])
+            cw.writerow(['Memes'] + [memes])
     elif args.format == 'json':
         with open(subreddit + '.json', 'w') as jsonfile:
             json.dump( \

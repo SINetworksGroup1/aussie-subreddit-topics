@@ -68,9 +68,9 @@ print("News: " + str(news))
 print("Entertainment: " + str(entertainment))
 print("Education: " + str(education))
 print("Memes: " + str(memes))
-print('Total: ' + str(total))
 
 total = generalDiscussion + transport + nature + history + other + questions + food + photos + news + entertainment + education + memes
+print('Total: ' + str(total))
 
 if total == 100:
     if args.format == 'csv':

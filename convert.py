@@ -87,6 +87,7 @@ if total == 100:
             cw.writerow(['News'] + [news])
             cw.writerow(['Entertainment'] + [entertainment])
             cw.writerow(['Education'] + [education])
+            cw.writerow(['Memes'] + [memes])
     elif args.format == 'json':
         with open(subreddit + '.json', 'w') as jsonfile:
             json.dump( \

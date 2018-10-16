@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule  } from '@angular/common/http';
-
-
 import { AppComponent } from './app.component';
+
+import { ChartsModule } from 'ng2-charts';
 import { CityService } from './city.service';
 
 @NgModule({
@@ -12,7 +12,8 @@ import { CityService } from './city.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [CityService],
   bootstrap: [AppComponent]

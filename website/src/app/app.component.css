@@ -32,6 +32,14 @@
     text-align: center;
 }
 
+canvas{
+    width: 130%;
+    height: 130%;
+}
+canbas p{
+    color:black;
+}
+
 .australia-pic button
 {
     font-size: 16px;

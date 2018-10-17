@@ -86,21 +86,44 @@ export class AppComponent implements OnInit {
       }
   };
 
+  public barChartLabels:string[] = [ 'Questions', 'Non-Questions'];
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    legend: {
+      labels: {
+        fontSize: 18,
+        fontColor: 'black'
+      }},
+    scales : {
+      yAxes: [{
+         ticks: {
+            beginAtZero: true,
+            steps : 10,
+            stepValue : 10,
+            max : 100,
+          }
+      }] 
+    }
+   };
+
+  public barColors=[
+    {
+    backgroundColor: [
+      'rgba(226, 86, 174, 0.9)',
+      'rgba(255, 255, 255, 0.6)'
+    ]
+  }];
+    
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  public barChartData:any[] = [{}];
+
 
   constructor(private cityService: CityService) { }
 
   ngOnInit() {
-    // let someArray = [1, "string", false];
-    // let count = 0;
-    // for (let cityName of this.cityNames) {
-    //   console.log(cityName);
-    //   console.log(count);
-
-    //   this.cityService.getCityInfo(cityName)
-    //     .subscribe(city => this.cities[count] = city);
-    //   count++;
-    // }
-
 
     this.cityService.getCityInfo('adelaide')
       .subscribe(city => this.cities[0] = city);
@@ -143,6 +166,7 @@ export class AppComponent implements OnInit {
         this.memes =  this.cities[city.id].memes;
         this.total =  this.cities[city.id].total;
         this.graph(this.cities[city.id]);
+        this.graph2(this.cities[city.id]);
         break;
       }
     }
@@ -158,7 +182,26 @@ export class AppComponent implements OnInit {
   }
 
 
+  graph2(city:City){
+    let nonquestions:number = (100 - this.questions);
+    this.barChartData = [
+    {data: [this.questions, nonquestions], label:'Questions'},
+    ]
+    console.log(this.barChartData);
+    console.log(this.barChartLegend);
+    console.log(this.barChartOptions);
+    console.log(this.barChartType);
+    
+    
+  }
 
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
 
 
   // public jsonToInfo(cityName){

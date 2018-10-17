@@ -5,7 +5,6 @@
   </h1> -->
 </div>
 <div class="australia-pic">
-
   <button class="perth" (click)="displayDetails('Perth')"></button>
   <button class="adelaide" (click)="displayDetails('Adelaide')"></button>
   <button class="melbourne" (click)="displayDetails('Melbourne')"></button>
@@ -19,24 +18,31 @@
 <div class="sidebar">
   <div *ngIf="cityName">
     <h1>{{cityName}}</h1>
-    <!-- <p>General Discussion: {{generalDiscussion}}</p>
-    <p>Transport: {{transport}}</p>
-    <p>Nature: {{nature}}</p>
-    <p>History: {{history}}</p>
-    <p>Other: {{other}}</p>
-    <p>Questions: {{questions}}</p>
-    <p>Food: {{food}}</p>
-    <p>Photos: {{photos}}</p>
-    <p>News: {{news}}</p>
-    <p>Entertainment: {{entertainment}}</p>
-    <p>Education: {{education}}</p>
-    <p>Memes: {{memes}}</p>
-    <p>Total: {{total}}</p> -->
 
-    <div style="display: block">
-      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieColors" [options]="pieChartOptions" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
+    <h2>Categories</h2>
+    <div class="pie-chart" style="display: block">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieColors" [options]="pieChartOptions"
+        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="bar-chart" style="display: block">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [colors]="barColors" [options]="barChartOptions" [legend]="barChartLegend"
+        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
     </div>
   </div>
 
+  <div class="info" *ngIf="!cityName">
+    <h1>
+      Welcome to Aussie Subreddits!
+    </h1>
+    <h3>Subreddits for each city have user made posts with a variety of categories. 
+      Clicking on the city will bring up graphs of information for what each Subreddit
+      is comprised of!
+    </h3>
+
+  </div>
 </div>

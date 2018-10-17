@@ -30,14 +30,25 @@
 .sidebar h1
 {
     text-align: center;
+    font-family: Sans-Serif;
 }
 
-canvas{
+.sidebar h2
+{
+    text-align: center;
+    font-family: Sans-Serif;
+}
+.sidebar h3
+{
+    padding: 20px;
+    text-align: left;
+    font-family: Sans-Serif;
+
+}
+
+.pie-chart canvas{
     width: 130%;
     height: 130%;
-}
-canbas p{
-    color:black;
 }
 
 .australia-pic button

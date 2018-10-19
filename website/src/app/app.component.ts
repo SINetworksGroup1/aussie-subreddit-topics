@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   memes;
   total;
 
-
+  info;
   cityName;
 
   //using service
@@ -83,12 +83,31 @@ export class AppComponent implements OnInit {
           fontSize: 18,
           fontColor: 'black'
         }
+      },
+      hover: {
+        onHover: (event, active) => {
+          
+          if(active && active.length){
+            // console.log(event);
+          // console.log(active);
+            let index = active[0]._index;
+            let str = active[0]._chart.config.data.labels[index].toString();
+            let data = active[0]._chart.config.data.datasets[0].data[index].toString();
+            
+            // if(str.search('%') == -1){
+            //   active[0]._chart.config.data.labels[index] = active[0]._chart.config.data.labels[index] + '%';
+            // }
+            this.info = data + '% of posts in the ' + this.cityName + ' subreddit are ' +str ;
+            console.log(this.info);
+          }
+        }
       }
-  };
+    };
 
   public barChartLabels:string[] = [ 'Questions', 'Non-Questions'];
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
+    maintainAspectRatio: false,
     responsive: true,
     legend: {
       labels: {
@@ -148,6 +167,7 @@ export class AppComponent implements OnInit {
 
   displayDetails(cityName: string): void {
     this.cityName = cityName;
+    this.info = "";
     // this.cityService.getCityInfo(cityName.toLowerCase())
     // .subscribe(city => this.city = city);
     for (let city of this.cityIDs) {
@@ -197,19 +217,25 @@ export class AppComponent implements OnInit {
 
   public chartClicked(e:any):void {
     console.log(e);
+    
+    if (e.active.length > 0) {
+      const chart = e.active[0]._chart;
+      const activePoints = chart.getElementAtEvent(e.event);
+      if ( activePoints.length > 0) {
+        // get the internal index of slice in pie chart
+        const clickedElementIndex = activePoints[0]._index;
+        const label = chart.data.labels[clickedElementIndex];
+        // get value by index
+        const value = chart.data.datasets[0].data[clickedElementIndex];
+        console.log(clickedElementIndex, label, value)
+      }
+    }
+
   }
  
   public chartHovered(e:any):void {
-    console.log(e);
+    // console.log(e);
   }
-
-
-  // public jsonToInfo(cityName){
-  //   let jsonData = JSON.parse(data);
-
-
-
-  // }
 
 
 }

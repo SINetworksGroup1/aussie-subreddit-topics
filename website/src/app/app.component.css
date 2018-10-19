@@ -1,9 +1,23 @@
-.australia-pic
+.content{
+    /* background-color: cornflowerblue; */
+}
+.australia-pic{
+    position: relative;
+    float:left;
+}
+.australia-pic h1{
+    text-align: center;
+    font-family: azonix;
+    font-size: 40px;
+    margin-left:30%;
+
+}
+.buttons
 {
     position: relative;
 
     float: left;
-
+    
     width: 45vw;
     height: 800px;
     margin-top: 40px;
@@ -19,12 +33,22 @@
 } */
 .sidebar
 {
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: 2px;
     float: right;
+    padding-left:50px;
+    padding-right:30px;
 
-    width: 30vw;
+    width: 33vw;
     height: 100vh;
 
     background-color: cadetblue;
+}
+
+@font-face {
+    font-family: azonix;
+    src: url('../assets/fonts/Azonix.otf');
 }
 
 .sidebar h1
@@ -47,10 +71,18 @@
 }
 
 .pie-chart canvas{
-    width: 130%;
-    height: 130%;
+    width: 110%;
+    height: 110%;
 }
 
+.bar-chart canvas{
+    width: 110%;
+    height: 110%;
+}
+/* .australia-pic button:hover
+{
+    visibility: hidden;
+} */
 .australia-pic button
 {
     font-size: 16px;
@@ -69,6 +101,9 @@
     border-radius: 100%;
     outline: 0;
     background-color: black;
+
+    /* width:30px;
+    height:30px */
 }
 
 .perth
@@ -117,4 +152,48 @@
 {
     top: 2.5%;
     left: 19%;
+}
+
+
+
+
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    /* z-index: 1; */
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

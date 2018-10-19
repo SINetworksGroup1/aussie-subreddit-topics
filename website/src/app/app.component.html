@@ -1,48 +1,63 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="title" style="text-align:center">
-  <!-- <h1>
-    Welcome to {{ title }}!
-  </h1> -->
-</div>
-<div class="australia-pic">
-  <button class="perth" (click)="displayDetails('Perth')"></button>
-  <button class="adelaide" (click)="displayDetails('Adelaide')"></button>
-  <button class="melbourne" (click)="displayDetails('Melbourne')"></button>
-  <button class="hobart" (click)="displayDetails('Hobart')"></button>
-  <button class="sydney" (click)="displayDetails('Sydney')"></button>
-  <button class="canberra" (click)="displayDetails('Canberra')"></button>
-  <button class="brisbane" (click)="displayDetails('Brisbane')"></button>
-  <button class="darwin" (click)="displayDetails('Darwin')"></button>
-</div>
-
-<div class="sidebar">
-  <div *ngIf="cityName">
-    <h1>{{cityName}}</h1>
-
-    <h2>Categories</h2>
-    <div class="pie-chart" style="display: block">
-      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieColors" [options]="pieChartOptions"
-        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-    </div>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="bar-chart" style="display: block">
-      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [colors]="barColors" [options]="barChartOptions" [legend]="barChartLegend"
-        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+<div class="content">
+  <div class="australia-pic">
+    <h1>Aussie Subreddits</h1>
+    <div class="buttons">
+      <button class="perth tooltip" (click)="displayDetails('Perth')">
+        <span class="tooltiptext">Perth</span>
+      </button>
+      <button class="adelaide tooltip" (click)="displayDetails('Adelaide')">
+        <span class="tooltiptext">Adelaide</span>
+      </button>
+      <button class="melbourne tooltip" (click)="displayDetails('Melbourne')">
+        <span class="tooltiptext">Melbourne</span>
+      </button>
+      <button class="hobart tooltip" (click)="displayDetails('Hobart')">
+        <span class="tooltiptext">Hobart</span>
+      </button>
+      <button class="sydney tooltip" (click)="displayDetails('Sydney')">
+        <span class="tooltiptext">Sydney</span>
+      </button>
+      <button class="canberra tooltip" (click)="displayDetails('Canberra')">
+        <span class="tooltiptext">Canberra</span>
+      </button>
+      <button class="brisbane tooltip" (click)="displayDetails('Brisbane')">
+        <span class="tooltiptext">Brisbane</span>
+      </button>
+      <button class="darwin tooltip" (click)="displayDetails('Darwin')">
+        <span class="tooltiptext">Darwin</span>
+      </button>
     </div>
   </div>
 
-  <div class="info" *ngIf="!cityName">
-    <h1>
-      Welcome to Aussie Subreddits!
-    </h1>
-    <h3>Subreddits for each city have user made posts with a variety of categories. 
-      Clicking on the city will bring up graphs of information for what each Subreddit
-      is comprised of!
-    </h3>
+  <div class="sidebar">
+    <div *ngIf="cityName">
+      <h1>{{cityName}}</h1>
 
+      <h2>Categories</h2>
+      <div class="pie-chart" style="display: block">
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [colors]="pieColors" [options]="pieChartOptions"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+      <h3 *ngIf="info" style="text-align: center">{{info}}</h3>
+      <h3 *ngIf="!info">
+        <br>
+      </h3>
+
+      <div class="bar-chart" style="display: block">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [colors]="barColors" [options]="barChartOptions" [legend]="barChartLegend"
+          [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+
+    <div class="info" *ngIf="!cityName">
+      <h1>
+        Welcome to Aussie Subreddits!
+      </h1>
+      <h3>Subreddits for each city have user made posts with a variety of categories. Clicking on the city will bring up graphs
+        of information for what each Subreddit is comprised of!
+      </h3>
+
+    </div>
   </div>
 </div>

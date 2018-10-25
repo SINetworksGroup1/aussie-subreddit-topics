@@ -3,7 +3,7 @@ A visualisation of Australian subreddit post topics scraped with Python and visu
 
 # Running the visualisation
 
-You'll need a recent version of Node (8.13 or later) capable of *ing Angular 6. Grab a copy [here](https://nodejs.org/en/download/) before you start.
+You'll need a recent version of Node (8.13 or later) capable of running Angular 6. Grab a copy [here](https://nodejs.org/en/download/) before you start.
 
 - Clone the repo with `git clone https://github.com/SINetworksGroup1/aussie-subreddit-topics.git`
 - `cd` into the newly-created `aussie-subreddit-topics` directory
